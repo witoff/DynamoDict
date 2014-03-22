@@ -2,7 +2,7 @@ from distutils.core import setup
     setup(
         name = 'dynamodict',
         packages = ['dynamodict', 'dynamodict.ddbd'], # this must be the same as the name above
-        version = '0.1',
+        version = '0.2',
         description = 'A simple ORM that maps DynamoDB Tables to native python dicts',
         author = 'Rob Witoff',
         install_requires = ['boto>=2.25'],
