@@ -1,29 +1,33 @@
 DynamoDict
 ==========
 
-Use a subclass of your favorite languages' native dictionary implementation based on DynamoDB
+A simple DynamoDB ORM that maps Dynamo tables to simple, native python dictionaries.
 
 
 ```python
-#imports.  Creds are handled automagically or a rich prompt is provided if not available.  Never in code
 from ddbd import ddbd
 
-#get the ddbd table
-people = ddbd['people']
+dynamo = ddbd(key="AWS_KEY", secret="AWS_SECRET", region="us-east-1")
 
-#append values
-if 'rob' not in people:
-  people.append('rob')
+# List all existing dicts
+print dynamo.list()
+# ['table 1', 'table2']
 
-#scan over the dict
-for p in people:
-  print 'key: ', p
-  print 'value: ', people[p]
-  
-#keys
-p.keys()
+# Retrieve a python dictionary backed by a dynamo table.
+#  if the table does not exist, it will create and block until available
+d = dynamo.get('ProfileData')
 
-#vals
-p.values()
+# Treat this table like a native python dict!
+print len(d)
+
+# Assign key/vals
+d['rob'] = {'eye_color' : 'blue'}
+
+# Iterate
+for k in d:
+  print '-', k, d[k]
+
+# Extract all keys
+print d.keys()
 
 ```
