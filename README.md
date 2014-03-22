@@ -4,6 +4,14 @@ DynamoDict
 A simple DynamoDB ORM that maps Dynamo tables to simple, native python dictionaries.
 
 
+### Installation
+
+```bash
+sudo pip install dynamodict
+```
+
+### Example
+
 ```python
 from ddbd import ddbd
 
